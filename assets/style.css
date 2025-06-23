@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "BLKCHCRY";
-  src: url("./fonts/BLKCHCRY.ttf") format('truetype');
+  src: url("./fonts/BLKCHCRY.TTF") format('truetype');
   font-weight: normal;
   font-style: normal;
 }
