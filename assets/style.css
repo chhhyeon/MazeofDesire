@@ -1,0 +1,363 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 모든 요소의 크기 계산을 동일하게 */
+}
+
+@font-face {
+  font-family: "BLKCHCRY";
+  src: url("fonts/BLKCHCRY.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%; /* 전체 화면을 채우도록 설정 */
+}
+
+body{
+  font-family: 'BLKCHCRY', sans-serif;
+  color: #FBFF00;
+/*  cursor: url('image/cursor.png') 10 10, pointer;*/
+}
+
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+
+.image-area {
+  position: relative;
+  width: 100vw;  /* 또는 원하는 크기 */
+  height: 100vh;
+  min-width: 100px;
+  min-height: 100px;
+  background: rgba(255,0,0,0);
+  overflow: hidden;
+  z-index:0;
+}
+
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 0; /* 세로로 위에 딱 붙게 설정 */
+  transform: translateX(-50%); /* 가로로 중앙 정렬 */
+  object-fit: cover;
+  object-position: center center;
+}
+
+.user-point {
+  position: absolute;
+  width: 40px;
+  height: auto;
+  transition: all 0.5s ease;
+/*  box-shadow: 5px 5px 5px 5px #Fff;*/
+}
+
+
+
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 3;
+  opacity: 1;
+  animation: showOverlay 3s ease-in-out forwards;
+}
+
+@keyframes showOverlay {
+  0% {
+    opacity: 1;
+    transform: scale(1); /* 처음에 화면 꽉 차게 설정 */
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1); /* 그대로 유지 */
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1); /* 점차 축소되고 */
+  }
+}
+
+.overlay-basic {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(45, 45, 45, 0.00) 87.5%, rgba(45, 45, 45, 0.30) 100%);
+  opacity: 1;
+  z-index: 1;
+}
+
+
+
+
+
+
+
+.line {
+  position: absolute;
+  width: 2px;
+  height: 0;
+  background-color: #FBFF00;
+  z-index: 2;
+  transition: height 1s ease-in-out;
+}
+
+
+.question-container {
+  position: absolute;
+  z-index: 2;
+  transform: translateX(0%);
+
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 정렬 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  align-items: flex-start;
+
+  opacity: 0;  /* 처음엔 안 보이게 설정 */
+  transition: opacity 0.5s ease; /* 부드럽게 나타나도록 설정 */
+}
+
+.question {
+  font-family: 'BLKCHCRY', sans-serif;
+  font-size: 1.2em;
+
+  display: inline-flex;
+  padding: 0.15rem 0.75rem;
+  justify-content: center;
+  align-items: center;
+/*  gap: 0.2rem;*/
+
+  border: 1px solid var(--Yellow, #FBFF00);
+  background: rgba(255, 255, 255, 0.20);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+}
+
+.ans1, .ans2 {
+  display: flex;
+  align-items: center; /* 수평으로 배치 */
+  gap: 0.625rem; /* 포인터와 답변 사이의 간격 */
+  margin-top: 8px;
+}
+
+.answer1, .answer2 {
+  font-family: 'BLKCHCRY', sans-serif;
+  font-size: 1.2em;
+  cursor: pointer;
+
+  display: flex;
+  padding: 0.15rem 0.75rem;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #FBFF00;
+  background: rgba(255, 255, 255, 0.20);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+}
+
+
+.answer1:hover, .answer2:hover {
+  box-shadow: 0px 4px 10px #FBFF00; 
+}
+
+
+
+
+
+
+
+
+
+/* 그래픽 이미지들 */
+.rsps_spd_txt {
+  position: absolute;
+  width: auto;
+  height: 3%;
+  top: 4%;
+  left: 3%;
+  transform: translateX(-3%);
+  z-index: 2;
+}
+
+.rsps_tndncy_txt {
+  position: absolute;
+  width: auto;
+  height: 3%;
+  top: 4%;
+  right: 3%;
+  transform: translateX(3%);
+  z-index: 2;
+}
+
+.rsps_spd {
+  position: absolute;
+  width: auto; /* 두 번째 그래픽의 비율 설정 */
+  height: 80%;
+  right: 3%;
+  z-index: 2;
+}
+
+.rsps_tndncy {
+  position: absolute;
+  width: auto; /* 원래 크기 비율을 유지하려면 비율을 설정 */
+  height: 80%;
+  left: 3%;
+  z-index: 2;
+}
+
+
+.left-bar-indicator {
+  position: absolute;
+  width: 30px;
+  height: auto;
+  left: 7%;
+  z-index: 2;
+}
+
+.right-bar-indicator {
+  position: absolute;
+  width: 30px;
+  height: auto;
+  right: 7%;
+  z-index: 2;
+  transform: rotate(180deg);
+}
+
+
+.left-bar-indicator, .right-bar-indicator {
+  transition: top 1s ease-in-out; /* 수직 이동 애니메이션 */
+}
+
+
+
+
+
+
+.sketch {
+  position: absolute;
+  width: auto;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  opacity: 0;
+  animation: showGraphic 3s ease-in-out forwards;
+}
+
+
+.title {
+  position: absolute;
+  width: auto;
+  height: 4%;
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  opacity: 0;
+  animation: showGraphic4 3s ease-in-out forwards;
+}
+
+@keyframes showGraphic {
+  0% {opacity: 1;}
+  70% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes showGraphic4 {
+  0% {opacity: 1;}
+  70% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+
+
+
+
+
+.about {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  width: 50px;
+  height: auto;
+  z-index: 2;
+  cursor:pointer;
+}
+
+
+#aboutpopup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4); /* 반투명 오버레이 */
+  display: none;
+  z-index: 9999;
+}
+
+#aboutpopup-content {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.5);
+  border-radius: 12px;
+  padding: 32px 48px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+
+
+#mouse-position {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      z-index: 3;
+    }
+
+
+.user-point, #line {
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+

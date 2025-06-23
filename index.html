@@ -1,0 +1,103 @@
+  
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="preload" href="assets/image/background.png" as="image">
+</head>
+
+
+<body>
+  <div class="container">
+        <!-- 배경 이미지 -->
+        <div class="image-area">
+          <img src="assets/image/background1.png" class="background-image" id="background-image">
+          <img src="assets/image/user-point.png" class="user-point" id="user-point">
+        </div>
+
+        <!-- <div id="mouse-position">X: 0.000, Y: 0.000</div> -->
+
+        <div class="overlay-basic"></div>
+        <div class="overlay"></div>
+
+
+        <!-- 선 (점에서 질문과 답변을 연결하는 선) -->
+        <div class="line" id="line"></div>
+
+        <!-- 수치표시자 -->
+        <img src="assets/image/indicator.png" class="left-bar-indicator" id="left-bar-indicator">
+        <img src="assets/image/indicator.png" class="right-bar-indicator" id="right-bar-indicator">
+
+
+        <!-- 텍스트 -->
+        <img src="assets/image/rspstndncy_txt.png" alt="rsps_tndncy_txt" class="rsps_tndncy_txt">
+        <img src="assets/image/rspsspd_txt.png" alt="rsps_spd_txt" class="rsps_spd_txt">
+        <!-- 그래픽 -->
+        <img src="assets/image/rspstdncy.png" alt="rsps_tndncy" class="rsps_tndncy">
+        <img src="assets/image/rspsspd.png" alt="rsps_spd" class="rsps_spd">
+
+        <!-- 질문과 답변 -->
+        <div class="question-container" id="questionContainer">
+          <div class="question" id="question"></div>
+
+          <div class="ans1">
+            <img src="assets/image/pointer.svg" class="pointer">
+            <div class="answer1" id="answer1"></div>
+          </div>
+          <div class="ans2">
+            <img src="assets/image/pointer.svg" class="pointer">
+            <div class="answer2" id="answer2"></div>
+          </div>
+        </div>
+
+
+
+        <!-- 초반 그래픽-->
+        <img src="assets/image/sketch.png" alt="sketch" class="sketch">
+        <img src="assets/image/Maze of Desire.png" alt="Maze of Desire" class="title">
+
+        <!-- 도움-->
+        <img src="assets/image/about.png" alt="도움말" class="about" id="about">
+        <!-- 팝업 오버레이와 내용 -->
+        <div id="aboutpopup" style="display:none;">
+          <div id="aboutpopup-content">
+            <ul>
+              <h2>How to Solve the Maze</h2>
+              <br> <!-- 한 줄 띄우기 -->
+              <li>Read the question and choose one of the two answers.</li>
+              <li>Each time you select an answer, the point on the maze moves.</li>
+              <li>The movement path of the point changes according to your choices.</li>
+              <li>When you answer all the questions, your maze path is completed.</li>
+              <br> 
+
+              <br> 
+              <h2>Notes</h2>
+              <br> 
+              <li>The point (user-point) moves through the maze based on your choices and the time you take.</li>
+              <li>Your answer time and answer tendencies are displayed on the left and right sides of the screen.</li>
+              <li>The choices for each question represent different tendencies, such as the imaginary world and the real world.</li>
+              <li>Quickly solving the maze is not necessarily the correct answer.</li>
+              </ul>
+          </div>
+        </div>
+
+        <!-- 팝업 -->
+        <div class="popup" id="popup">
+          <div id="popup-content">
+            <p>현재까지의 경로:</p>
+            <svg id="path-sketch" width="1000" height="1000" style="background:transparent; display:block; margin:0 auto;"></svg>
+            <button id="restart-button">다시 시작</button>
+          </div>
+        </div>
+  </div>
+
+
+  <script src="assets/script.js"></script>
+
+
+
+</body>
+</html>
